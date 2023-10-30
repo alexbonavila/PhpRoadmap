@@ -1,7 +1,8 @@
 # PHP Backend
 
 ## PHP
-- Data typesControl structures
+- Data types
+- Control structures
 - Functions
 - Classes and interfaces
 - Extending and implementation
