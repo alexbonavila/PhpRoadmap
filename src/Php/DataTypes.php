@@ -38,7 +38,7 @@ $iterableVar = ["a", "b", "c"];
 $nullVar = NULL;
 
 // Resource
-$fileHandle = fopen("example.txt", "r");
+$fileHandle = fopen("./resources/files/example.txt", "r");
 
 /* Print all variables */
 
