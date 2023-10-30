@@ -1,151 +1,100 @@
 # PHP Backend
 
 ## PHP
-### Data types
-TODO
-### Control structures
-TODO
-### Functions
-TODO
-### Classes and interfaces
-TODO
-### Extending and implementation
-TODO
-### Type-Hint
-TODO
-### HTTP Request handling
-TODO
-### Exceptions
-TODO
-### Namespaces
-TODO
-### SPL
-TODO
-### Traits
-TODO
-### WorkerPool
-TODO
+- Data typesControl structures
+- Functions
+- Classes and interfaces
+- Extending and implementation
+- Type-Hint
+- HTTP Request handling
+- Exceptions
+- Namespaces
+- SPL
+- Traits
+- WorkerPool
+
 
 ## GIT Basics
-TODO
+
 
 ## Composer
-### require, install, update
-TODO
-### Package version control
-TODO
-### Packagist
-TODO
-### Autoload
-TODO
+- require, install, update
+- Package version control
+- Packagist
+- Autoload
+
 
 ## Databases
-### PostgreSQL
-TODO
-### MongoDB
-TODO
-### SQLite
-TODO
-### Transactions
-TODO
-#### ORM
-##### Doctrine
-TODO
-##### ActiveRecord
-TODO
-##### PDO
-TODO
+- PostgreSQL
+- MongoDB
+- SQLite
+- Transactions
+- ORM
+  - Doctrine
+  - ActiveRecord
+  - PDO
+
 
 ## Debugging
-### XDebug
-TODO
-### Zend Debugger
-TODO
+- XDebug
+- Zend Debugger
+
 
 ## Code Quality
-### PSR-12
-TODO
-### CodeSniffer
-TODO
-### MessDetector
-TODO
-### Psalm
-TODO
-### Phan
-TODO
-### PHPStan
-TODO
+- PSR-12
+- CodeSniffer
+- MessDetector
+- Psalm
+- Phan
+- PHPStan
+
 
 ## API
-### REST
-TODO
-### JSON API
-TODO
-### SOAP
-TODO
-### Postman
-TODO
-### Swagger / OpenAPI
-TODO
-### API Blueprint
-TODO
+- REST
+- JSON API
+- SOAP
+- Postman
+- Swagger / OpenAPI
+- API Blueprint
+
 
 ## Caching
-### PSR-6 & PSR-16
-TODO
-### APCu
-TODO
-### Redis / Memcached
-TODO
-### Array & Void cache
-TODO
-### Filesystem
-TODO
+- PSR-6 & PSR-16
+- APCu
+- Redis / Memcached
+- Array & Void cache
+- Filesystem
+
 
 ## Background execution
-### Crontab
-TODO
-### Queues / Message brokers
-TODO
-#### RabbitMQ
-TODO
-#### Kafka
-TODO
+- Crontab
+- Queues / Message brokers
+  - RabbitMQ
+  - Kafka
+
 
 ## Testing
-### PHPUnit
-TODO
-### Codeception
-TODO
-### Behat
-TODO
-### Infection
-TODO
+- PHPUnit
+- Codeception
+- Behat
+- Infection
+
 
 ## Frameworks
-### Symfony
-TODO
-### Laravel
-TODO
-### YII
-TODO
-### CakePHP
-TODO
+- Symfony
+- Laravel
+- YII
+- CakePHP
+
 
 ## Monitoring
-### PSR-3
-TODO
-### Monolog
-TODO
-### Sentry
-TODO
-### Grafana
-TODO
-### Graylog or ELK
-TODO
+- PSR-3
+- Monolog
+- Sentry
+- Grafana
+- Graylog or ELK
+
 
 ## Profiling
-### XHProf
-TODO
-### Blackfire
-TODO
+- XHProf
+- Blackfire
