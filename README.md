@@ -12,7 +12,6 @@
 - Namespaces
 - SPL
 - Traits
-- WorkerPool
 
 
 ## GIT Basics
