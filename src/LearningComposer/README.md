@@ -32,11 +32,13 @@ The install command is used to install all the dependencies defined in composer.
 
 `$ composer install`
 
-The update command updates the dependencies to their latest allowed versions within the limits you have defined in composer.json:
+The update command updates the dependencies to their latest allowed versions within the limits are defined in composer.json:
 
 `$ composer update`
 
 ## Package version control
+
+Packages have been installed in composer.json, just to learn the different forms of package version control.
 
 ## Packagist
 
