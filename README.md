@@ -40,10 +40,7 @@
 - TODO Put url to project
 
 ## Composer
-- require, install, update
-- Package version control
-- Packagist
-- Autoload
+- [LearningComposer](https://github.com/alexbonavila/PhpRoadmap/tree/main/src/LearningComposer)
 
 
 ## Databases
