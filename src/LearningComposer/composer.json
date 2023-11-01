@@ -1,0 +1,19 @@
+{
+    "name": "alexbonavila/learning-composer",
+    "description": "This is a project to learn how composer works",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Alexbonavila\\LearningComposer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "alexbonavila",
+            "email": "alexbonavila44@gmail.com"
+        }
+    ],
+    "require": {
+        "nesbot/carbon": "^2.71"
+    }
+}

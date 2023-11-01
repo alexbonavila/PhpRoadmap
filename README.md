@@ -37,7 +37,7 @@
 
 
 ## GIT Basics
-
+- TODO Put url to project
 
 ## Composer
 - require, install, update
@@ -49,12 +49,10 @@
 ## Databases
 - PostgreSQL
 - MongoDB
-- SQLite
-- Transactions
 - ORM
   - Doctrine
   - ActiveRecord
-  - PDO
+- PDO
 
 
 ## Debugging
