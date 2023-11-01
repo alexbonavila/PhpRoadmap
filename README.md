@@ -40,7 +40,7 @@
 - TODO Put url to project
 
 ## Composer
-- [LearningComposer](https://github.com/alexbonavila/PhpRoadmap/tree/main/src/LearningComposer)
+- [Learning Composer Project](https://github.com/alexbonavila/LearningComposer)
 
 
 ## Databases
