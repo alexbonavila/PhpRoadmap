@@ -1,24 +1,30 @@
 <?php
 
-require_once 'Objects/Create.php';
-require_once 'Objects/Delete.php';
-require_once 'Objects/Read.php';
-require_once 'Objects/Update.php';
-require_once 'Objects/Setup.php';
+require_once 'Actions/Create.php';
+require_once 'Actions/Delete.php';
+require_once 'Actions/Read.php';
+require_once 'Actions/Update.php';
+require_once 'Actions/Setup.php';
 
 $setup = new Setup();
 $pdo = $setup->index();
 
-$create = new Create($pdo);
-$delete = new Delete($pdo);
-$read = new Read($pdo);
-$update = new Update($pdo);
+if ($pdo != NULL){
+    $create = new Create($pdo);
+    $delete = new Delete($pdo);
+    $read = new Read($pdo);
+    $update = new Update($pdo);
 
-$create->index();
-$read->index();
+    $create->index();
+    $read->index();
 
-$update->index();
-$read->index();
+    $update->index();
+    $read->index();
 
-$delete->index();
-$read->index();
+    $delete->index();
+    $read->index();
+} else {
+    echo "Execution finished with ERROR" . PHP_EOL;
+}
+
+
