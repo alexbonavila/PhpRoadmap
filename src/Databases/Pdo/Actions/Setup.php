@@ -8,23 +8,23 @@ class Setup
     /**
      * @var PDO Instance of PDO for database interaction.
      */
-    private $pdo;
+    private PDO $pdo;
     /**
      * @var string[] Array containing SQL statements to create tables.
      */
-    private $tables = [
-        'User' => "CREATE TABLE IF NOT EXISTS User (
+    private array $tables = [
+        'User' => "CREATE TABLE IF NOT EXISTS user (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             email TEXT NOT NULL UNIQUE
         )",
-        'Document' => "CREATE TABLE IF NOT EXISTS Document (
+        'Document' => "CREATE TABLE IF NOT EXISTS document (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             dni TEXT NOT NULL UNIQUE,
             user_id INTEGER NOT NULL,
             FOREIGN KEY(user_id) REFERENCES User(id) ON DELETE CASCADE
         )",
-        'Post' => "CREATE TABLE IF NOT EXISTS Post (
+        'Post' => "CREATE TABLE IF NOT EXISTS post (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             text TEXT NOT NULL,
@@ -48,7 +48,7 @@ class Setup
      * @param $sql
      * @return void
      */
-    private function executeStatement($sql)
+    private function executeStatement($sql): void
     {
         $this->pdo->exec($sql);
     }
@@ -58,10 +58,10 @@ class Setup
      *
      * @return void
      */
-    private function dropTables()
+    private function dropTables(): void
     {
         foreach ($this->tables as $tableName => $sql) {
-            $this->executeStatement("DROP TABLE IF EXISTS {$tableName}");
+            $this->executeStatement("DROP TABLE IF EXISTS $tableName");
         }
     }
 
@@ -70,7 +70,7 @@ class Setup
      *
      * @return void
      */
-    private function createTables()
+    private function createTables(): void
     {
         foreach ($this->tables as $sql) {
             $this->executeStatement($sql);
@@ -83,7 +83,7 @@ class Setup
      *
      * @return PDO|NULL The PDO instance if successful, NULL otherwise.
      */
-    public function index()
+    public function index(): ?PDO
     {
         try {
             $this->dropTables();
