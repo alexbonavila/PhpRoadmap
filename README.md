@@ -1,5 +1,29 @@
-# PHP Backend
+# Table of Contents
+- [Introduction](#introduction)
+- [Objective](#objective)
+- [PHP Backend](#php-backend)
+  - [PHP](#php)
+  - [GIT](#git)
+  - [Composer](#composer)
+  - [Databases](#databases)
+  - [Debugging](#debugging)
+  - [Code Quality](#code-quality)
+  - [API](#api)
+  - [Caching](#caching)
+  - [Background execution](#background-execution)
+  - [Testing](#testing)
+  - [Frameworks](#frameworks)
+  - [Monitoring](#monitoring)
+  - [Profiling](#profiling)
+- [Bibliography](#bibliography)
 
+# Introduction
+
+
+# Objective
+
+
+# PHP Backend
 ## PHP
 - Data types 
   - [Source](./src/Php/DataTypes.php)
@@ -115,3 +139,15 @@
 ## Profiling
 - XHProf
 - Blackfire
+
+
+# Bibliography
+- https://www.php.net/
+- https://www.php.net/manual/es/book.pdo.php
+- https://dev.to/he110/php-backend-roadmap-2j1a
+- https://www.w3schools.com/php/
+- https://www.php.net/manual/es/book.pdo.php
+- https://www.sqlite.org/index.html
+- https://www.postgresql.org/download/
+- https://getcomposer.org/
+- https://www.mongodb.com/try/download/community
