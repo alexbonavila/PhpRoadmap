@@ -36,7 +36,7 @@ function read(Read $reader): void
     if ($user) {
         echo 'User ID: ' . $user['id'] . ', Name: ' . $user['name'] . ', Email: ' . $user['email'] . PHP_EOL;
     } else {
-        echo "User not found.";
+        echo "User not found.". PHP_EOL;
     }
 
     // Get a single user by email
@@ -44,7 +44,23 @@ function read(Read $reader): void
     if ($user) {
         echo 'User ID: ' . $user['id'] . ', Name: ' . $user['name'] . ', Email: ' . $user['email'] . PHP_EOL;
     } else {
-        echo "User not found.";
+        echo "User not found.". PHP_EOL;
+    }
+}
+
+function update(Update $updater): void
+{
+    $userId = 1;
+    $userUpdateData = [
+        'name' => 'Jane Doe'
+    ];
+
+    $rowsAffected = $updater->updateById('User', $userId, $userUpdateData);
+
+    if ($rowsAffected) {
+        echo "Updated {$rowsAffected} row(s).". PHP_EOL;
+    } else {
+        echo "No rows updated or error occurred.". PHP_EOL;
     }
 }
 
@@ -61,6 +77,10 @@ function main(): void
         $updater = new Update($pdo);
 
         create($creator);
+
+        read($reader);
+
+        update($updater);
 
         read($reader);
 
