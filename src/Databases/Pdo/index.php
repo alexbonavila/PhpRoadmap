@@ -64,6 +64,18 @@ function update(Update $updater): void
     }
 }
 
+function delete(Delete $deleter):void
+{
+    $userId = 1;
+    $rowsAffected = $deleter->deleteById('User', $userId);
+
+    if ($rowsAffected) {
+        echo "Deleted {$rowsAffected} row(s).". PHP_EOL;
+    } else {
+        echo "No rows deleted or error occurred.". PHP_EOL;
+    }
+}
+
 
 function main(): void
 {
@@ -84,7 +96,10 @@ function main(): void
 
         read($reader);
 
+        delete($deleter);
 
+        read($reader);
+        
     } else {
         echo "Execution finished with ERROR" . PHP_EOL;
     }
