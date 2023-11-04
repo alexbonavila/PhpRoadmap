@@ -40,6 +40,9 @@ class Setup
     {
         $this->pdo = new PDO('sqlite:./DB.sqlite');
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Enable Foreign Key restrictions
+        $this->pdo->exec('PRAGMA foreign_keys = ON;');
     }
 
     /**
