@@ -23,6 +23,31 @@ function create(Create $creator): void
     }
 }
 
+function read(Read $reader): void
+{
+    // Get all users
+    $users = $reader->getAll('user');
+    foreach ($users as $user) {
+        echo 'User ID: ' . $user['id'] . ', Name: ' . $user['name'] . ', Email: ' . $user['email'] . PHP_EOL;
+    }
+
+    // Get a single user by ID
+    $user = $reader->getById('user', 1);
+    if ($user) {
+        echo 'User ID: ' . $user['id'] . ', Name: ' . $user['name'] . ', Email: ' . $user['email'] . PHP_EOL;
+    } else {
+        echo "User not found.";
+    }
+
+    // Get a single user by email
+    $user = $reader->getByField('user', 'email', "john.doe@example.com");
+    if ($user) {
+        echo 'User ID: ' . $user['id'] . ', Name: ' . $user['name'] . ', Email: ' . $user['email'] . PHP_EOL;
+    } else {
+        echo "User not found.";
+    }
+}
+
 
 function main(): void
 {
@@ -31,11 +56,13 @@ function main(): void
 
     if ($pdo != NULL) {
         $creator = new Create($pdo);
-        $delete = new Delete($pdo);
-        $read = new Read($pdo);
-        $update = new Update($pdo);
+        $deleter = new Delete($pdo);
+        $reader = new Read($pdo);
+        $updater = new Update($pdo);
 
         create($creator);
+
+        read($reader);
 
 
     } else {
