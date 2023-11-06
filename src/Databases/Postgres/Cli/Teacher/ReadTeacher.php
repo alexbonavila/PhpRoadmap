@@ -44,8 +44,3 @@ class ReadTeacher
         $this->readById(1);
     }
 }
-
-
-
-
-

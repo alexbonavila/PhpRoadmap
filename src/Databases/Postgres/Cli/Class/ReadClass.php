@@ -42,9 +42,3 @@ class ReadClass
         $this->readById(1);
     }
 }
-
-
-
-
-
-

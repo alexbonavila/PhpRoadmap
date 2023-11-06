@@ -13,11 +13,20 @@ class Teacher
     }
 
     public function find($id) {
-        return $this->queryBuilder->select('teachers', '*', "id = {$id}");
+        $result = $this->queryBuilder->select('teachers', '*', "id = {$id}");
+
+        return pg_fetch_assoc($result);
     }
 
     public function all() {
-        return $this->queryBuilder->select('teachers');
+        $result =  $this->queryBuilder->select('teachers');
+
+        $teachers = [];
+        while ($row = pg_fetch_assoc($result)) {
+            $teachers[] = $row;
+        }
+
+        return $teachers;
     }
 
     public function create($data) {

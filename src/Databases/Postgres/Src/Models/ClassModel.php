@@ -13,11 +13,20 @@ class ClassModel
     }
 
     public function find($id) {
-        return $this->queryBuilder->select('classes', '*', "id = {$id}");
+        $result = $this->queryBuilder->select('classes', '*', "id = {$id}");
+
+        return pg_fetch_assoc($result);
     }
 
     public function all() {
-        return $this->queryBuilder->select('classes');
+        $result =  $this->queryBuilder->select('classes');
+
+        $classes = [];
+        while ($row = pg_fetch_assoc($result)) {
+            $classes[] = $row;
+        }
+
+        return $classes;
     }
 
     public function create($data) {
