@@ -3,6 +3,7 @@
 namespace Postgres\Src\Services;
 
 use InvalidArgumentException;
+use PgSql\Result;
 use Postgres\Src\Models\Teacher;
 
 class TeacherService {
@@ -12,34 +13,39 @@ class TeacherService {
         $this->teacher = new Teacher($connection);
     }
 
-    public function create($data) {
+    public function create($data): Result|false
+    {
         if (empty($data['dni']) || empty($data['name'])) {
             throw new InvalidArgumentException('DNI and name are mandatory.');
         }
         return $this->teacher->create($data);
     }
 
-    public function getAll() {
+    public function getAll(): array
+    {
         return $this->teacher->all();
     }
 
-    public function findById($id) {
+    public function findById($id): false|array
+    {
         if (empty($id)) {
-            throw new InvalidArgumentException('DNI is mandatory.');
+            throw new InvalidArgumentException('Id is mandatory.');
         }
         return $this->teacher->find($id);
     }
 
-    public function update($id, $data) {
+    public function update($id, $data): Result|false
+    {
         if (empty($id) || !is_numeric($id)) {
-            throw new InvalidArgumentException('DNI is mandatory and it must be numeric.');
+            throw new InvalidArgumentException('Id is mandatory and it must be numeric.');
         }
         return $this->teacher->update($id, $data);
     }
 
-    public function delete($id) {
+    public function delete($id): Result|false
+    {
         if (empty($id) || !is_numeric($id)) {
-            throw new InvalidArgumentException('DNI is mandatory and it must be numeric.');
+            throw new InvalidArgumentException('Id is mandatory and it must be numeric.');
         }
         return $this->teacher->delete($id);
     }
