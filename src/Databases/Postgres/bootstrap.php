@@ -34,9 +34,9 @@ if ($argc > 1) {
             break;
 
         default:
-            echo "Parameter incorrect.\n";
+            echo "Parameter incorrect." . PHP_EOL;
             break;
     }
 } else {
-    echo "Parameter incorrect.\n";
+    echo "Parameter incorrect." . PHP_EOL;
 }

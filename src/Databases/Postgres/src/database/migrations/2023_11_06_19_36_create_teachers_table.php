@@ -10,9 +10,9 @@ class CreateTeachersTable
 
         if ($result)
         {
-            echo "Table 'teachers' created properly.\n";
+            echo "Table 'teachers' created properly." . PHP_EOL;
         } else {
-            echo "Error creating table 'teachers': " . pg_last_error($connection) . "\n";
+            echo "Error creating table 'teachers': " . pg_last_error($connection) . PHP_EOL;
         }
     }
 
@@ -23,9 +23,9 @@ class CreateTeachersTable
         $result = pg_query($connection, $query);
 
         if ($result) {
-            echo "Table 'teachers' deleted properly.\n";
+            echo "Table 'teachers' deleted properly." . PHP_EOL;
         } else {
-            echo "Error deleting table 'teachers': " . pg_last_error($connection) . "\n";
+            echo "Error deleting table 'teachers': " . pg_last_error($connection) . PHP_EOL;
         }
     }
 }
