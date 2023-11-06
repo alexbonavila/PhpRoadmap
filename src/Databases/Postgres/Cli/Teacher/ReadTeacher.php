@@ -25,7 +25,7 @@ class ReadTeacher
 
     private function readById($id)
     {
-        echo  PHP_EOL . " Teacher:" . PHP_EOL;
+        echo  PHP_EOL . "Teacher:" . PHP_EOL;
         $teacher = $this->teacherService->findById($id);
         if ($teacher) {
             echo "ID: {$teacher['id']}, DNI: {$teacher['dni']}, Name: {$teacher['name']}" . PHP_EOL;

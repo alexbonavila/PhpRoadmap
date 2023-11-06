@@ -22,6 +22,7 @@ if ($argc > 1) {
     // Execution control
     switch ($argv[1]) {
         case 'migrate_refresh':
+            echo PHP_EOL;
             CreateTeachersClassesTable::down($connection);
             CreateClassesTable::down($connection);
             CreateTeachersTable::down($connection);
@@ -32,6 +33,7 @@ if ($argc > 1) {
             break;
 
         case 'run_cli':
+            echo PHP_EOL;
             $cliHandler = new CliHandler($connection);
             $cliHandler->handle();
             break;

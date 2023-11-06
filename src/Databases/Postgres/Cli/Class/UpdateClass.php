@@ -18,9 +18,9 @@ class UpdateClass
     {
         try {
             $this->classService->update($id, $data);
-            echo "Class updated." . PHP_EOL;
+            echo "Class updated." . PHP_EOL . PHP_EOL;
         } catch (Exception $e) {
-            echo "Error updating Class: " . $e->getMessage() . PHP_EOL;
+            echo "Error updating Class: " . $e->getMessage() . PHP_EOL . PHP_EOL;
         }
     }
 

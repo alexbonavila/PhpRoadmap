@@ -35,6 +35,7 @@ class CreateClass
         foreach ($this->classes as $classData) {
             $this->create($classData);
         }
+        echo PHP_EOL;
     }
 }
 

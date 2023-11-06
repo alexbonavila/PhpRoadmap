@@ -17,7 +17,7 @@ class GetAssociations
     private function findClassesByTeacher()
     {
         // Read all classes from Teacher with id 1
-        echo "Classes from Teacher with ID 1:" . PHP_EOL;
+        echo PHP_EOL . "Classes from Teacher with ID 1:" . PHP_EOL;
         $classes = $this->teacherClassService->findClassesByTeacher(1);
         foreach ($classes as $class) {
             echo "ID: {$class['id']}, Code: {$class['code']}, Name: {$class['name']}" . PHP_EOL;
@@ -33,7 +33,7 @@ class GetAssociations
         foreach ($teachers as $teacher) {
             echo "ID: {$teacher['id']}, DNI: {$teacher['dni']}, Name: {$teacher['name']}" . PHP_EOL;
         }
-
+        echo PHP_EOL;
     }
 
     public function run()

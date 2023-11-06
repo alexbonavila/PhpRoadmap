@@ -61,7 +61,6 @@ class CliHandler
         $this->readTeacher->run();
         $this->listAssociations->run();
 
-
         $this->updateClass->run();
         $this->updateTeacher->run();
 

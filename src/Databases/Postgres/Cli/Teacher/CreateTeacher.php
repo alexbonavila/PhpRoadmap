@@ -39,6 +39,7 @@ class CreateTeacher
         foreach ($this->teachers as $teacherData) {
             $this->create($teacherData);
         }
+        echo PHP_EOL;
     }
 }
 

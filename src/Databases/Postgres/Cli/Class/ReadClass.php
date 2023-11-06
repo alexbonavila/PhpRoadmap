@@ -27,9 +27,9 @@ class ReadClass
         echo PHP_EOL."Class:" . PHP_EOL;
         $class = $this->classService->findById($id);
         if ($class) {
-            echo "ID: {$class['id']}, Code: {$class['code']}, Name: {$class['name']}" . PHP_EOL;
+            echo "ID: {$class['id']}, Code: {$class['code']}, Name: {$class['name']}" . PHP_EOL . PHP_EOL;
         } else {
-            echo "Class not found." . PHP_EOL;
+            echo "Class not found." . PHP_EOL . PHP_EOL;
         }
     }
 
