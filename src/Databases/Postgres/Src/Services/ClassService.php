@@ -1,5 +1,10 @@
 <?php
 
+namespace Postgres\Src\Services;
+
+use InvalidArgumentException;
+use Postgres\Src\Models\ClassModel;
+
 class ClassService {
     private ClassModel $classModel;
 

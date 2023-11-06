@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Setup class responsible for initializing database tables.
+ * Setup class responsible for initializing Database tables.
  */
 class Setup
 {
     /**
-     * @var PDO Instance of PDO for database interaction.
+     * @var PDO Instance of PDO for Database interaction.
      */
     private PDO $pdo;
     /**

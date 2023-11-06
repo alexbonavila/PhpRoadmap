@@ -1,5 +1,9 @@
 <?php
 
+namespace Postgres\Src\Models;
+
+use Postgres\Src\Database\QueryBuilder;
+
 class Teacher
 {
     private QueryBuilder $queryBuilder;

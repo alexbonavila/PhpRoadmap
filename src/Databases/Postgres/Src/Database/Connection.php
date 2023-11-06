@@ -1,5 +1,7 @@
 <?php
 
+namespace Postgres\Src\Database;
+
 class Connection {
     private static $connection;
 

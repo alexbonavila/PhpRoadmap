@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Class Update handles the updating of records in database tables.
+ * Class Update handles the updating of records in Database tables.
  */
 class Update {
     /**
-     * @var PDO Instance of PDO for database interaction.
+     * @var PDO Instance of PDO for Database interaction.
      */
     private PDO $pdo;
 
     /**
      * Constructor initializes the Update class with a PDO object.
      *
-     * @param PDO $pdo A PDO instance for database interaction.
+     * @param PDO $pdo A PDO instance for Database interaction.
      */
     public function __construct(PDO $pdo)
     {

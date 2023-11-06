@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Class Create handles the insertion of data into database tables.
+ * Class Create handles the insertion of data into Database tables.
  */
 class Create {
     /**
-     * @var PDO Instance of PDO for database interaction.
+     * @var PDO Instance of PDO for Database interaction.
      */
     private PDO $pdo;
 
     /**
      * Constructor initializes the Create class with a PDO object.
      *
-     * @param PDO $pdo A PDO instance for database interaction.
+     * @param PDO $pdo A PDO instance for Database interaction.
      */
     public function __construct(PDO $pdo)
     {

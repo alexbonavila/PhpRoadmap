@@ -1,5 +1,9 @@
 <?php
 
+namespace Postgres\Src\Database;
+
+use Exception;
+
 class QueryBuilder
 {
     protected $connection;
@@ -9,7 +13,7 @@ class QueryBuilder
         $this->connection = $connection;
     }
 
-    public function select($table, $columns = '*'): \PgSql\Result|false
+    public function select($table, $columns = '*')
     {
         $query = "SELECT {$columns} FROM {$table};";
         return pg_query($this->connection, $query);

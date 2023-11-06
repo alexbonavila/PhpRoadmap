@@ -1,5 +1,7 @@
 <?php
 
+namespace Postgres\Src\Database\Migrations;
+
 class CreateClassesTable
 {
     public static function up($connection)
