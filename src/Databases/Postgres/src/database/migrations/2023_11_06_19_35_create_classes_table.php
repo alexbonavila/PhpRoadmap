@@ -10,9 +10,9 @@ class CreateClassesTable
 
         if ($result)
         {
-            echo "Tabla 'classes' creada correctamente.\n";
+            echo "Tabla 'classes' created properly.\n";
         } else {
-            echo "Error al crear la tabla 'classes': " . pg_last_error($connection) . "\n";
+            echo "Error creating table 'classes': " . pg_last_error($connection) . "\n";
         }
     }
 
@@ -23,9 +23,9 @@ class CreateClassesTable
         $result = pg_query($connection, $query);
 
         if ($result) {
-            echo "Tabla 'classes' eliminada correctamente.\n";
+            echo "Table 'classes' deleted properly.\n";
         } else {
-            echo "Error al eliminar la tabla 'classes': " . pg_last_error($connection) . "\n";
+            echo "Error deleting table 'classes': " . pg_last_error($connection) . "\n";
         }
     }
 

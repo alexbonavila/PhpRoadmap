@@ -1,25 +1,42 @@
 <?php
 
-// Define route base
-$GLOBALS['baseProject'] = __DIR__;
+if ($argc > 1) {
 
-// Load configuration
-require_once __DIR__ . '/src/config/config.php';
+    // Define route base
+    $GLOBALS['baseProject'] = __DIR__;
 
-// Establish the connection with the database
-require_once __DIR__ . '/src/database/Connection.php';
-$connection = Connection::getConnection();
+    // Load configuration
+    require_once __DIR__ . '/src/config/config.php';
 
-// Migrate Database (Move code in future)
-require_once __DIR__ . '/src/database/migrations/2023_11_06_19_35_create_classes_table.php';
-require_once __DIR__ . '/src/database/migrations/2023_11_06_19_36_create_teachers_table.php';
-require_once __DIR__ . '/src/database/migrations/2023_11_06_19_38_create_teachers_classes_table.php';
+    // Establish the connection with the database
+    require_once __DIR__ . '/src/database/Connection.php';
+    $connection = Connection::getConnection();
 
-CreateTeachersTable::down($connection);
-CreateTeachersTable::up($connection);
+    // Execution control
+    switch ($argv[1]){
+        case 'migrate_refresh':
+            // Migrate Database TODO Refactor this code
+            require_once __DIR__ . '/src/database/migrations/2023_11_06_19_35_create_classes_table.php';
+            require_once __DIR__ . '/src/database/migrations/2023_11_06_19_36_create_teachers_table.php';
+            require_once __DIR__ . '/src/database/migrations/2023_11_06_19_38_create_teachers_classes_table.php';
 
-CreateClassesTable::down($connection);
-CreateClassesTable::up($connection);
+            CreateTeachersClassesTable::down($connection);
+            CreateClassesTable::down($connection);
+            CreateTeachersTable::down($connection);
 
-CreateTeachersClassesTable::down($connection);
-CreateTeachersClassesTable::up($connection);
+            CreateTeachersTable::up($connection);
+            CreateClassesTable::up($connection);
+            CreateTeachersClassesTable::up($connection);
+            break;
+
+        case 'run_cli':
+            echo "Run cli";
+            break;
+
+        default:
+            echo "Parameter incorrect.\n";
+            break;
+    }
+} else {
+    echo "Parameter incorrect.\n";
+}
