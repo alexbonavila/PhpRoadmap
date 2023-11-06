@@ -5,7 +5,7 @@ use Service\TeacherClassService;
 $teacherClassService = new TeacherClassService($connection);
 
 $associations = [
-    ['code' => 1, 'dni' => [1, 2]],
+    ['code' => 1, 'dni' => [1, 2, 3]],
     ['code' => 2, 'dni' => [2, 6]],
     ['code' => 3, 'dni' => [3, 4]]
 ];
