@@ -10,7 +10,7 @@ class Update {
     private PDO $pdo;
 
     /**
-     * Constructor initializes the Update class with a PDO object.
+     * Constructor initializes the Update Class with a PDO object.
      *
      * @param PDO $pdo A PDO instance for Database interaction.
      */

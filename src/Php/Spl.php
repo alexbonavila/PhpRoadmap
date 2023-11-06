@@ -30,11 +30,11 @@ $fileObject->fwrite("Hello, SPL!");
 
 // Autoload
 function my_autoloader($class) {
-    include './resources/files/' . $class . '.class.php';
+    include './resources/files/' . $class . '.Class.php';
 }
 spl_autoload_register('my_autoloader');
 
-$obj = new MyClass(); // Esto intentará cargar 'includes/MyClass.class.php'
+$obj = new MyClass(); // Esto intentará cargar 'includes/MyClass.Class.php'
 
 // Observer y Observable
 class MyObserver implements SplObserver {

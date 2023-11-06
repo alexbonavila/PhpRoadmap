@@ -9,6 +9,7 @@ require_once __DIR__ . '/Src/Config/config.php';
 // Load namespaces structure
 require_once __DIR__ . '/Src/Config/bootstrap.php';
 
+use Postgres\Cli\CliHandler;
 use Postgres\Src\Database\Connection;
 use Postgres\Src\Database\Migrations\CreateClassesTable;
 use Postgres\Src\Database\Migrations\CreateTeachersClassesTable;
@@ -21,8 +22,6 @@ if ($argc > 1) {
     // Execution control
     switch ($argv[1]) {
         case 'migrate_refresh':
-            // Migrate Database
-
             CreateTeachersClassesTable::down($connection);
             CreateClassesTable::down($connection);
             CreateTeachersTable::down($connection);
@@ -30,11 +29,11 @@ if ($argc > 1) {
             CreateTeachersTable::up($connection);
             CreateClassesTable::up($connection);
             CreateTeachersClassesTable::up($connection);
-
             break;
 
         case 'run_cli':
-            echo "Run Cli";
+            $cliHandler = new CliHandler($connection);
+            $cliHandler->handle();
             break;
 
         default:

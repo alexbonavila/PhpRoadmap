@@ -23,11 +23,11 @@ class ClassService {
         return $this->classModel->all();
     }
 
-    public function findByCode($code) {
-        if (empty($code)) {
+    public function findById($id) {
+        if (empty($id)) {
             throw new InvalidArgumentException('The code is mandatory.');
         }
-        return $this->classModel->find($code);
+        return $this->classModel->find($id);
     }
 
     public function update($id, $data) {

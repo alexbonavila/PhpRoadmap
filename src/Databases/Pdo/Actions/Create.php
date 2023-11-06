@@ -10,7 +10,7 @@ class Create {
     private PDO $pdo;
 
     /**
-     * Constructor initializes the Create class with a PDO object.
+     * Constructor initializes the Create Class with a PDO object.
      *
      * @param PDO $pdo A PDO instance for Database interaction.
      */

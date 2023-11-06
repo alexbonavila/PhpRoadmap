@@ -55,7 +55,7 @@ class Utils
 {
     public static function showLength($str)
     {
-        // Using global PHP class "DateTime" from within a namespace
+        // Using global PHP Class "DateTime" from within a namespace
         $dt = new \DateTime();
         echo "Current date and time: " . $dt->format('Y-m-d H:i:s') . PHP_EOL;
         echo "Length of the string: " . strlen($str) . PHP_EOL;

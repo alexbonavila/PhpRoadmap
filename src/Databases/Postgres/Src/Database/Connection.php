@@ -5,7 +5,8 @@ namespace Postgres\Src\Database;
 class Connection {
     private static $connection;
 
-    public static function getConnection() {
+    public static function getConnection()
+    {
         if (!self::$connection) {
             self::$connection = pg_connect(
                 "host=" . getenv('DB_HOST') .

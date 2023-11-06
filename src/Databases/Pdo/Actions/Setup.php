@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Setup class responsible for initializing Database tables.
+ * Setup Class responsible for initializing Database tables.
  */
 class Setup
 {

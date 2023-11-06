@@ -23,11 +23,11 @@ class TeacherService {
         return $this->teacher->all();
     }
 
-    public function findByDni($dni) {
-        if (empty($dni)) {
+    public function findById($id) {
+        if (empty($id)) {
             throw new InvalidArgumentException('DNI is mandatory.');
         }
-        return $this->teacher->find($dni);
+        return $this->teacher->find($id);
     }
 
     public function update($id, $data) {
