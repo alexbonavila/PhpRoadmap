@@ -16,7 +16,8 @@ class Database
         $password = $_ENV['DB_PASSWORD'];
         $dbName = $_ENV['DB_DATABASE'];
 
-        $uri = "mongodb://$host:$port/$dbName";
+        $uri = "mongodb://$host:$port/$dbName?authSource=admin";
+        echo $uri;
         $options = [];
 
         if ($username && $password) {
