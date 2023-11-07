@@ -13,5 +13,7 @@
             "email": "alexbonavila44@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "mongodb/mongodb": "^1.16"
+    }
 }
