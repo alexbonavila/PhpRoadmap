@@ -17,25 +17,64 @@ use Postgres\Cli\Teacher\ReadTeacher;
 use Postgres\Cli\Teacher\UpdateTeacher;
 
 
+/**
+ * The CliHandler class orchestrates a series of CLI operations for managing
+ * teachers, classes, and their associations in a database.
+ */
 class CliHandler
 {
+    /**
+     * @var AssociateTeacherClass
+     */
     private AssociateTeacherClass $associate;
+    /**
+     * @var DissociateTeacherClass
+     */
     private DissociateTeacherClass $disassociate;
+    /**
+     * @var GetAssociations
+     */
     private GetAssociations $listAssociations;
+    /**
+     * @var CreateClass
+     */
     private CreateClass $createClass;
+    /**
+     * @var ReadClass
+     */
     private ReadClass $readClass;
+    /**
+     * @var UpdateClass
+     */
     private UpdateClass $updateClass;
+    /**
+     * @var DeleteClass
+     */
     private DeleteClass $deleteClass;
+    /**
+     * @var CreateTeacher
+     */
     private CreateTeacher $createTeacher;
+    /**
+     * @var ReadTeacher
+     */
     private ReadTeacher $readTeacher;
+    /**
+     * @var UpdateTeacher
+     */
     private UpdateTeacher $updateTeacher;
+    /**
+     * @var DeleteTeacher
+     */
     private DeleteTeacher $deleteTeacher;
 
 
     /**
-     * @param $connection
+     * Initializes the handler with all necessary action instances, each provided with a database connection.
+     *
+     * @param mixed $connection The database connection object or resource.
      */
-    public function __construct($connection)
+    public function __construct(mixed $connection)
     {
         $this->associate = new AssociateTeacherClass($connection);
         $this->disassociate = new DissociateTeacherClass($connection);
@@ -51,6 +90,12 @@ class CliHandler
     }
 
 
+    /**
+     * Executes a sequence of operations including creating, reading, updating, associating,
+     * disassociating, and deleting records for classes and teachers.
+     *
+     * @return void
+     */
     public function handle(): void
     {
         $this->createClass->run();
