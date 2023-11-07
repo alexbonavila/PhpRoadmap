@@ -4,7 +4,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Abadm\\Mongo\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
@@ -14,6 +14,7 @@
         }
     ],
     "require": {
-        "mongodb/mongodb": "^1.16"
+        "mongodb/mongodb": "^1.16",
+        "vlucas/phpdotenv": "^5.5"
     }
 }
