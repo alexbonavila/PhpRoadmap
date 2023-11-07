@@ -1,7 +1,7 @@
 <?php
 
 
-// Base class
+// Base Class
 class Animal
 {
     public function speak()
@@ -10,7 +10,7 @@ class Animal
     }
 }
 
-// Extending the Animal class
+// Extending the Animal Class
 class Dog extends Animal
 {
     // Overriding the parent method
@@ -29,7 +29,7 @@ $dog = new Dog();
 echo $dog->speak() . PHP_EOL;  // Woof!
 echo $dog->fetch() . PHP_EOL; // Fetching the ball...
 
-// Another class extending Animal
+// Another Class extending Animal
 class Cat extends Animal
 {
     public function speak()
@@ -59,7 +59,7 @@ class Human implements Workable
 $human = new Human();
 echo $human->work() . PHP_EOL;  // Working on a computer...
 
-// Extending a class and implementing an interface
+// Extending a Class and implementing an interface
 class SuperHuman extends Human implements Workable
 {
     public function fly()
@@ -67,7 +67,7 @@ class SuperHuman extends Human implements Workable
         return "Flying high in the sky!";
     }
 
-    // Don't need to implement work() method here, as it's already defined in the Human class
+    // Don't need to implement work() method here, as it's already defined in the Human Class
 }
 
 $superHuman = new SuperHuman();

@@ -41,7 +41,7 @@ function handleDELETE() {
 }
 
 // Run with this command
-//      php -S localhost:9621 src/Php/HttpRequestHandling.php
+//      php -S localhost:9621 Src/Php/HttpRequestHandling.php
 
 // Try with this example oclearr using postman
 //      curl -X GET http://localhost:9621
