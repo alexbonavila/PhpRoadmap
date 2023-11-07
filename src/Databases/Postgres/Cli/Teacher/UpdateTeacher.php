@@ -15,7 +15,7 @@ class UpdateTeacher
         $this->teacherService = new TeacherService($connection);
     }
 
-    private function update($id, $data)
+    private function update($id, $data): void
     {
         try {
             $this->teacherService->update($id, $data);
@@ -25,7 +25,7 @@ class UpdateTeacher
         }
     }
 
-    public function run()
+    public function run(): void
     {
         // Update Teacher with id 1
         $this->update(1, ['dni' => '00000000A']);

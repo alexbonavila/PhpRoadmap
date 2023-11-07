@@ -2,7 +2,6 @@
 
 namespace Postgres\Cli\Association;
 
-use Exception;
 use Postgres\Src\Services\TeacherClassService;
 
 class GetAssociations
@@ -14,7 +13,7 @@ class GetAssociations
         $this->teacherClassService = new TeacherClassService($connection);
     }
 
-    private function findClassesByTeacher()
+    private function findClassesByTeacher(): void
     {
         // Read all classes from Teacher with id 1
         echo PHP_EOL . "Classes from Teacher with ID 1:" . PHP_EOL;
@@ -25,7 +24,7 @@ class GetAssociations
 
     }
 
-    private function findTeachersByClass()
+    private function findTeachersByClass(): void
     {
         // Read all teachers form Class with id 1
         echo  PHP_EOL . "Teachers from Class with ID 1:" . PHP_EOL;
@@ -36,7 +35,7 @@ class GetAssociations
         echo PHP_EOL;
     }
 
-    public function run()
+    public function run(): void
     {
         $this->findClassesByTeacher();
 

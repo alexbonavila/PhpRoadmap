@@ -14,7 +14,7 @@ class ReadTeacher
         $this->teacherService = new TeacherService($connection);
     }
 
-    private function readAll()
+    private function readAll(): void
     {
         echo "All teachers:" . PHP_EOL;
         $teachers = $this->teacherService->getAll();
@@ -23,7 +23,7 @@ class ReadTeacher
         }
     }
 
-    private function readById($id)
+    private function readById($id): void
     {
         echo  PHP_EOL . "Teacher:" . PHP_EOL;
         $teacher = $this->teacherService->findById($id);
@@ -35,7 +35,7 @@ class ReadTeacher
 
     }
 
-    public function run()
+    public function run(): void
     {
         // Read all teachers
         $this->readAll();

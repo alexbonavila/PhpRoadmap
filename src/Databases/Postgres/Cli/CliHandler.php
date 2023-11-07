@@ -51,7 +51,7 @@ class CliHandler
     }
 
 
-    public function handle()
+    public function handle(): void
     {
         $this->createClass->run();
         $this->createTeacher->run();

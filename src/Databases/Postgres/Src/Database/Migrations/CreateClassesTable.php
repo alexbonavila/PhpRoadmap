@@ -4,7 +4,7 @@ namespace Postgres\Src\Database\Migrations;
 
 class CreateClassesTable
 {
-    public static function up($connection)
+    public static function up($connection): void
     {
         $query = "CREATE TABLE classes (id SERIAL PRIMARY KEY, code VARCHAR(255) UNIQUE NOT NULL, name VARCHAR(255) NOT NULL);";
 
@@ -18,7 +18,7 @@ class CreateClassesTable
         }
     }
 
-    public static function down($connection)
+    public static function down($connection): void
     {
         $query = "DROP TABLE IF EXISTS classes;";
 

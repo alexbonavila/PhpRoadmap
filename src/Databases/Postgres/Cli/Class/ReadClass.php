@@ -13,7 +13,7 @@ class ReadClass
         $this->classService = new ClassService($connection);
     }
 
-    private function readAll()
+    private function readAll(): void
     {
         echo "All the classes:" . PHP_EOL;
         $classes = $this->classService->getAll();
@@ -22,7 +22,7 @@ class ReadClass
         }
     }
 
-    private function readById($id)
+    private function readById($id): void
     {
         echo PHP_EOL."Class:" . PHP_EOL;
         $class = $this->classService->findById($id);
@@ -33,7 +33,7 @@ class ReadClass
         }
     }
 
-    public function run()
+    public function run(): void
     {
         // Read all classes
         $this->readAll();

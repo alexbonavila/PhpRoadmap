@@ -3,63 +3,65 @@
 namespace Postgres\Src\Database;
 
 use Exception;
+use PgSql\Result;
+use PgSql\Connection;
 
 class QueryBuilder
 {
-    protected $connection;
+    protected Connection $connection;
 
     public function __construct($connection)
     {
         $this->connection = $connection;
     }
 
-    public function select($table, $columns = '*')
+    public function select($table, $columns = '*'): Result|false
     {
-        $query = "SELECT {$columns} FROM {$table};";
+        $query = "SELECT $columns FROM $table;";
         return pg_query($this->connection, $query);
     }
 
-    public function insert($table, $data)
+    public function insert($table, $data): Result|false
     {
         $keys = implode(", ", array_keys($data));
         $values = implode(", ", array_map(function ($value) {
             return "'" . pg_escape_string($value) . "'";
         }, array_values($data)));
 
-        $query = "INSERT INTO {$table} ({$keys}) VALUES ({$values});";
+        $query = "INSERT INTO $table ($keys) VALUES ($values);";
         return pg_query($this->connection, $query);
     }
 
-    public function update($table, $data, $conditions)
+    public function update($table, $data, $conditions): Result|false
     {
         $updates = implode(", ", array_map(function ($value, $key) {
-            return "{$key} = '" . pg_escape_string($value) . "'";
+            return "$key = '" . pg_escape_string($value) . "'";
         }, array_values($data), array_keys($data)));
 
         $where = implode(" AND ", array_map(function ($value, $key) {
-            return "{$key} = '" . pg_escape_string($value) . "'";
+            return "$key = '" . pg_escape_string($value) . "'";
         }, array_values($conditions), array_keys($conditions)));
 
-        $query = "UPDATE {$table} SET {$updates} WHERE {$where};";
+        $query = "UPDATE $table SET $updates WHERE $where;";
         return pg_query($this->connection, $query);
     }
 
-    public function delete($table, $conditions)
+    public function delete($table, $conditions): Result|false
     {
         $where = implode(" AND ", array_map(function ($value, $key) {
-            return "{$key} = '" . pg_escape_string($value) . "'";
+            return "$key = '" . pg_escape_string($value) . "'";
         }, array_values($conditions), array_keys($conditions)));
 
-        $query = "DELETE FROM {$table} WHERE {$where};";
+        $query = "DELETE FROM $table WHERE $where;";
         return pg_query($this->connection, $query);
     }
 
-    public function rawQuery($sql)
+    public function rawQuery($sql): array
     {
         $result = pg_query($this->connection, $sql);
 
         if (!$result) {
-            throw new Exception('Error en la consulta SQL: ' . pg_last_error($this->connection));
+            throw new Exception('Error in SQL query: ' . pg_last_error($this->connection));
         }
 
         $rows = [];

@@ -14,7 +14,7 @@ class UpdateClass
         $this->classService = new ClassService($connection);
     }
 
-    private function update($id, $data)
+    private function update($id, $data): void
     {
         try {
             $this->classService->update($id, $data);
@@ -24,7 +24,7 @@ class UpdateClass
         }
     }
 
-    public function run()
+    public function run(): void
     {
         // Update Class with id 1
         $this->update(1, ['code' => 'C201']);

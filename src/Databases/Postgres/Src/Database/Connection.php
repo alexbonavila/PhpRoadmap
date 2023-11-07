@@ -14,7 +14,7 @@ class Connection {
                 " dbname=" . getenv('DB_DATABASE') .
                 " user=" . getenv('DB_USERNAME') .
                 " password=" . getenv('DB_PASSWORD')
-            ) or die('No se ha podido conectar: ' . pg_last_error());
+            ) or die('Cannot establish connection: ' . pg_last_error());
         }
 
         return self::$connection;

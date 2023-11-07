@@ -14,7 +14,7 @@ class DissociateTeacherClass
         $this->teacherClassService = new TeacherClassService($connection);
     }
 
-    private function dissociate($teacherId, $classId)
+    private function dissociate($teacherId, $classId): void
     {
         try {
             $this->teacherClassService->delete($teacherId, $classId);
@@ -24,7 +24,7 @@ class DissociateTeacherClass
         }
     }
 
-    public function run()
+    public function run(): void
     {
         // Dissociate Class with id 1 form Teacher with id 2
         $this->dissociate(2, 1);

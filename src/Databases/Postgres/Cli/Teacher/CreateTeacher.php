@@ -24,7 +24,7 @@ class CreateTeacher
         $this->teacherService = new TeacherService($connection);
     }
 
-    private function create($teacherData)
+    private function create($teacherData): void
     {
         try {
             $this->teacherService->create($teacherData);
@@ -34,7 +34,7 @@ class CreateTeacher
         }
     }
 
-    public function run()
+    public function run(): void
     {
         foreach ($this->teachers as $teacherData) {
             $this->create($teacherData);

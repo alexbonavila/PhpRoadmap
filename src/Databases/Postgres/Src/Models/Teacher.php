@@ -2,6 +2,7 @@
 
 namespace Postgres\Src\Models;
 
+use PgSql\Result;
 use Postgres\Src\Database\QueryBuilder;
 
 class Teacher
@@ -12,13 +13,15 @@ class Teacher
         $this->queryBuilder = new QueryBuilder($connection);
     }
 
-    public function find($id) {
-        $result = $this->queryBuilder->select('teachers', '*', "id = {$id}");
+    public function find($id): false|array
+    {
+        $result = $this->queryBuilder->select('teachers', '*', "id = $id");
 
         return pg_fetch_assoc($result);
     }
 
-    public function all() {
+    public function all(): array
+    {
         $result =  $this->queryBuilder->select('teachers');
 
         $teachers = [];
@@ -29,15 +32,18 @@ class Teacher
         return $teachers;
     }
 
-    public function create($data) {
+    public function create($data): Result|false
+    {
         return $this->queryBuilder->insert('teachers', $data);
     }
 
-    public function update($id, $data) {
+    public function update($id, $data): Result|false
+    {
         return $this->queryBuilder->update('teachers', $data, ['id' => $id]);
     }
 
-    public function delete($id) {
+    public function delete($id): Result|false
+    {
         return $this->queryBuilder->delete('teachers', ['id' => $id]);
     }
 }

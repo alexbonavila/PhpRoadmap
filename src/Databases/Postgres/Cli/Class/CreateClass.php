@@ -20,7 +20,7 @@ class CreateClass
         $this->classService = new ClassService($connection);
     }
 
-    private function create($classData)
+    private function create($classData): void
     {
         try {
             $this->classService->create($classData);
@@ -30,7 +30,7 @@ class CreateClass
         }
     }
 
-    public function run()
+    public function run(): void
     {
         foreach ($this->classes as $classData) {
             $this->create($classData);

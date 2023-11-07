@@ -20,17 +20,17 @@ class AssociateTeacherClass
         $this->teacherClassService = new TeacherClassService($connection);
     }
 
-    private function associate($teacherId, $association)
+    private function associate($teacherId, $association): void
     {
         try {
             $this->teacherClassService->create($teacherId, $association['code']);
-            echo "Teacher {$teacherId} associated with Class {$association['code']}" . PHP_EOL;
+            echo "Teacher $teacherId associated with Class {$association['code']}" . PHP_EOL;
         } catch (Exception $e) {
             echo "Error when associating Teacher with Class: {$e->getMessage()}" . PHP_EOL;
         }
     }
 
-    public function run()
+    public function run(): void
     {
         foreach ($this->associations as $association) {
             foreach ($association['dni'] as $teacherId) {

@@ -4,7 +4,7 @@ namespace Postgres\Src\Database\Migrations;
 
 class CreateTeachersClassesTable
 {
-    public static function up($connection)
+    public static function up($connection): void
     {
         $query = "CREATE TABLE teachers_classes (teacher_id INT NOT NULL, class_id INT NOT NULL, PRIMARY KEY (teacher_id, class_id), FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE CASCADE, FOREIGN KEY (class_id) REFERENCES classes(id) ON DELETE CASCADE);";
 
@@ -18,7 +18,7 @@ class CreateTeachersClassesTable
         }
     }
 
-    public static function down($connection)
+    public static function down($connection): void
     {
         $query = "DROP TABLE IF EXISTS teachers_classes;";
 

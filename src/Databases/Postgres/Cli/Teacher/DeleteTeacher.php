@@ -14,7 +14,7 @@ class DeleteTeacher
         $this->teacherService = new TeacherService($connection);
     }
 
-    private function delete($id)
+    private function delete($id): void
     {
         try {
             $this->teacherService->delete($id);
@@ -24,7 +24,7 @@ class DeleteTeacher
         }
     }
 
-    public function run()
+    public function run(): void
     {
         // Delete Teacher with id 5
         $this->delete(5);
