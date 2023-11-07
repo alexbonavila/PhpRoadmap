@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Class Read handles the retrieval of data from database tables.
+ * Class Read handles the retrieval of data from Database tables.
  */
 class Read {
     /**
-     * @var PDO Instance of PDO for database interaction.
+     * @var PDO Instance of PDO for Database interaction.
      */
     private PDO $pdo;
 
     /**
-     * Constructor initializes the Read class with a PDO object.
+     * Constructor initializes the Read Class with a PDO object.
      *
-     * @param PDO $pdo A PDO instance for database interaction.
+     * @param PDO $pdo A PDO instance for Database interaction.
      */
     public function __construct(PDO $pdo)
     {
