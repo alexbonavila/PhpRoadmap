@@ -6,22 +6,49 @@ use Exception;
 use PgSql\Result;
 use PgSql\Connection;
 
+/**
+ * The QueryBuilder class provides an interface to build and execute SQL queries.
+ */
 class QueryBuilder
 {
+    /**
+     * The database connection resource.
+     *
+     * @var Connection
+     */
     protected Connection $connection;
 
-    public function __construct($connection)
+    /**
+     * QueryBuilder constructor to set up the database connection.
+     *
+     * @param Connection $connection The database connection resource.
+     */
+    public function __construct(Connection $connection)
     {
         $this->connection = $connection;
     }
 
-    public function select($table, $columns = '*'): Result|false
+    /**
+     * Executes a SELECT query on the given table.
+     *
+     * @param string $table The name of the table to select from.
+     * @param string $columns The columns to select, defaults to all (*).
+     * @return Result|false   Returns a Result object on success, or false on failure.
+     */
+    public function select(string $table, string $columns = '*'): Result|false
     {
         $query = "SELECT $columns FROM $table;";
         return pg_query($this->connection, $query);
     }
 
-    public function insert($table, $data): Result|false
+    /**
+     * Executes an INSERT query on the given table with the specified data.
+     *
+     * @param string $table The name of the table to insert into.
+     * @param array $data An associative array of column => value pairs.
+     * @return Result|false Returns a Result object on success, or false on failure.
+     */
+    public function insert(string $table, array $data): Result|false
     {
         $keys = implode(", ", array_keys($data));
         $values = implode(", ", array_map(function ($value) {
@@ -32,7 +59,15 @@ class QueryBuilder
         return pg_query($this->connection, $query);
     }
 
-    public function update($table, $data, $conditions): Result|false
+    /**
+     * Executes an UPDATE query on the given table with the specified data and conditions.
+     *
+     * @param string $table The name of the table to update.
+     * @param array $data An associative array of column => value pairs to update.
+     * @param array $conditions An associative array of column => value pairs for the conditions.
+     * @return Result|false       Returns a Result object on success, or false on failure.
+     */
+    public function update(string $table, array $data, array $conditions): Result|false
     {
         $updates = implode(", ", array_map(function ($value, $key) {
             return "$key = '" . pg_escape_string($value) . "'";
@@ -46,7 +81,14 @@ class QueryBuilder
         return pg_query($this->connection, $query);
     }
 
-    public function delete($table, $conditions): Result|false
+    /**
+     * Executes a DELETE query on the given table with the specified conditions.
+     *
+     * @param string $table The name of the table to delete from.
+     * @param array $conditions An associative array of column => value pairs for the conditions.
+     * @return Result|false      Returns a Result object on success, or false on failure.
+     */
+    public function delete(string $table, array $conditions): Result|false
     {
         $where = implode(" AND ", array_map(function ($value, $key) {
             return "$key = '" . pg_escape_string($value) . "'";
@@ -56,7 +98,14 @@ class QueryBuilder
         return pg_query($this->connection, $query);
     }
 
-    public function rawQuery($sql): array
+    /**
+     * Executes a raw SQL query and returns the result as an associative array.
+     *
+     * @param string $sql The raw SQL query to execute.
+     * @return array      An array of associative arrays representing the result set.
+     * @throws Exception  Throws an exception if the SQL query fails.
+     */
+    public function rawQuery(string $sql): array
     {
         $result = pg_query($this->connection, $sql);
 
