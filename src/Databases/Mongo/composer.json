@@ -1,0 +1,17 @@
+{
+    "name": "abadm/mongo",
+    "description": "This is a simple project for learning mongo db",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Abadm\\Mongo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "alexbonavila",
+            "email": "alexbonavila44@gmail.com"
+        }
+    ],
+    "require": {}
+}
