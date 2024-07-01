@@ -69,11 +69,18 @@ class PostService {
     {
         $post = $this->getPostById($postId);
         $post->addComment($commentId);
+
+        $this->updatePost($postId, $post->toArray());
     }
 
-    public function removeComment($postId, $commentId): void
+    public function removeComment(string $postId, string $commentId): void
     {
         $post = $this->getPostById($postId);
+
+        print_r($commentId);
+
         $post->removeComment($commentId);
+
+        $this->updatePost($postId, $post->toArray());
     }
 }

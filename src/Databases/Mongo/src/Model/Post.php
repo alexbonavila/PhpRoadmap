@@ -75,11 +75,16 @@ class Post
         $this->updatedAt = new UTCDateTime();
     }
 
-    public function removeComment($commentId): void
+    public function removeComment(string $commentId): void
     {
+        print_r("\n");
+        print_r($commentId);
+        print_r("\n");
         $this->comments = array_values(array_filter($this->comments, function ($element) use ($commentId) {
-            return $element['id'] !== $commentId;
+            return $element !== $commentId;
         }));
+
+        $this->updatedAt = new UTCDateTime();
     }
 
     public function mapObject($post): void
