@@ -12,10 +12,11 @@ class PostService {
         $this->postRepository = $postRepository;
     }
 
-    public function createPost(array $postData): bool {
+    public function createPost(array $postData): object
+    {
         $result = $this->postRepository->create($postData);
 
-        return $result->isAcknowledged();
+        return $this->postRepository->readById($result->getInsertedId());
     }
 
     public function getPostsByUserId(string $userId): array {

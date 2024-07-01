@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Model\User;
 use App\Repository\UserRepository;
 use Exception;
 use MongoDB\BSON\UTCDateTime;
@@ -16,18 +17,24 @@ class UserService {
     /**
      * @throws Exception
      */
-    public function createUser(array $userData): bool {
+    public function createUser(User $user): object
+    {
         // Validating data
-        if (!filter_var($userData['email'], FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($user->getEmail(), FILTER_VALIDATE_EMAIL)) {
             throw new Exception('Invalid email');
         }
-        $result = $this->userRepository->create($userData);
 
-        return $result->isAcknowledged();
+        $result = $this->userRepository->create($user->toArray());
+
+        $user->mapObject($this->userRepository->readById($result->getInsertedId()));
+
+        return $user;
     }
 
     public function getUserByEmail(string $email): ?object {
-        return $this->userRepository->findByEmail($email);
+        $user = new User();
+        $user->mapObject($this->userRepository->findByEmail($email));
+        return $user;
     }
 
     public function updateUser(string $userId, array $newData): int {
@@ -40,6 +47,15 @@ class UserService {
     }
 
     public function getAllUsers(): array {
-        return $this->userRepository->readAll();
+        $users = [];
+        $users_raw = $this->userRepository->readAll();
+
+        foreach ($users_raw as $rUser) {
+            $user = new User();
+            $user->mapObject($rUser);
+            $users[] = $user;
+        }
+
+        return $users;
     }
 }

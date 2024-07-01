@@ -14,7 +14,8 @@ class CommentService {
         $this->postService = $postService;
     }
 
-    public function createComment(array $commentData): bool {
+    public function createComment(array $commentData): object
+    {
         $result = $this->commentRepository->create($commentData);
         if ($result->isAcknowledged()) {
             // Add comment to the post
@@ -26,7 +27,7 @@ class CommentService {
 
             $this->postService->updatePost($commentData["postId"], $post);
         }
-        return $result->isAcknowledged();
+        return $this->commentRepository->readById($result->getInsertedId());
     }
 
     public function getCommentsByPostId(string $postId): array {
