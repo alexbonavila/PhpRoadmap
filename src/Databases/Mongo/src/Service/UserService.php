@@ -31,7 +31,8 @@ class UserService {
         return $user;
     }
 
-    public function getUserByEmail(string $email): ?object {
+    public function getUserByEmail(string $email): User
+    {
         $user = new User();
         $user->mapObject($this->userRepository->findByEmail($email));
         return $user;

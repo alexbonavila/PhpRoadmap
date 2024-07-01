@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Model\Post;
 use App\Repository\PostRepository;
 use MongoDB\BSON\UTCDateTime;
 
@@ -12,15 +13,34 @@ class PostService {
         $this->postRepository = $postRepository;
     }
 
-    public function createPost(array $postData): object
+    public function createPost(Post $post): object
     {
-        $result = $this->postRepository->create($postData);
+        $result = $this->postRepository->create($post->toArray());
 
-        return $this->postRepository->readById($result->getInsertedId());
+        $post->mapObject($this->postRepository->readById($result->getInsertedId()));
+
+        return $post;
     }
 
-    public function getPostsByUserId(string $userId): array {
-        return $this->postRepository->findByUserId($userId);
+    public function getPostsByUserId(string $userId): array
+    {
+        $posts = [];
+        $posts_raw = $this->postRepository->findByUserId($userId);
+
+        foreach ($posts_raw as $rPost) {
+            $post = new Post();
+            $post->mapObject($rPost);
+            $posts[] = $post;
+        }
+
+        return $posts;
+    }
+
+    public function getPostById(string $postId): Post
+    {
+        $post = new Post();
+        $post->mapObject($this->postRepository->readById($postId));
+        return $post;
     }
 
     public function updatePost(string $postId, array $newData): int {
@@ -33,11 +53,15 @@ class PostService {
     }
 
     public function getAllPosts(): array {
-        return $this->postRepository->readAll();
-    }
+        $posts = [];
+        $posts_raw = $this->postRepository->readAll();
 
-    public function getPostById(string $postId): object|null
-    {
-        return $this->postRepository->readById($postId);
+        foreach ($posts_raw as $rPost) {
+            $post = new Post();
+            $post->mapObject($rPost);
+            $posts[] = $post;
+        }
+
+        return $posts;
     }
 }

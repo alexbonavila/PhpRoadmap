@@ -16,6 +16,7 @@ class Post {
     public function __construct() {
         $this->createdAt = new UTCDateTime();
         $this->updatedAt = new UTCDateTime();
+        $this->comments = [];
     }
 
     // Getters and setters
@@ -80,7 +81,7 @@ class Post {
         $this->content = $post['content'];
         $this->createdAt = $post['createdAt'];
         $this->updatedAt = $post['updatedAt'];
-        $this->comments = $post['comments'];
+        $this->comments = $post['comments']->getArrayCopy();
     }
 
     public function toArray(): array
