@@ -68,9 +68,9 @@
 
 
 ## Databases
-- [PostgreSQL](https://github.com/alexbonavila/PhpRoadmap/src/Databases/Postgres)
-- [MongoDB](https://github.com/alexbonavila/PhpRoadmap/src/Databases/Mongo)
-- [PDO](https://github.com/alexbonavila/PhpRoadmap/src/Databases/Pdo)
+- [PostgreSQL](https://github.com/alexbonavila/PhpRoadmap/tree/main/src/Databases/Postgres)
+- [MongoDB](https://github.com/alexbonavila/PhpRoadmap/tree/main/src/Databases/Mongo)
+- [PDO](https://github.com/alexbonavila/PhpRoadmap/tree/main/src/Databases/Pdo)
 - ORM
   - Doctrine
   - Eloquent ORM
