@@ -1,6 +1,8 @@
 # Table of Contents
 - [Introduction](#introduction)
 - [Design](#design)
+- [Execution](#execution)
+- [Bibliography](#bibliography)
 
 # Introduction
 This modest project is developed in PHP 8.2, allowing the author to review and attest to his knowledge of PDO. It is not intended to serve as a guide or manual of best practices.
