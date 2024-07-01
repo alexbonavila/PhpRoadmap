@@ -2,35 +2,61 @@
 
 namespace App\Model;
 
-use MongoDB\Collection;
+use MongoDB\BSON\UTCDateTime;
 
 class User {
-    private Collection $collection;
+    private $id;
+    private $username;
+    private $email;
+    private $password;
+    private $createdAt;
+    private $updatedAt;
 
-    public function __construct(Collection $collection) {
-        $this->collection = $collection;
+    public function __construct($username, $email, $password) {
+        $this->username = $username;
+        $this->email = $email;
+        $this->password = $password;
+        $this->createdAt = new UTCDateTime();
+        $this->updatedAt = new UTCDateTime();
     }
 
-    public function create(array $userData): bool {
-        $insertOneResult = $this->collection->insertOne($userData);
-        return $insertOneResult->isAcknowledged();
+    // Getters and setters
+    public function getId() {
+        return $this->id;
     }
 
-    public function read(string $userId): ?object {
-        return $this->collection->findOne(['_id' => $userId]);
+    public function getUsername() {
+        return $this->username;
     }
 
-    public function readByDni(string $dni): ?object {
-        return $this->collection->findOne(['dni' => $dni]);
+    public function getEmail() {
+        return $this->email;
     }
 
-    public function update(string $dni, array $newData): int {
-        $updateResult = $this->collection->updateOne(['dni' => $dni], ['$set' => $newData]);
-        return $updateResult->getModifiedCount();
+    public function getPassword() {
+        return $this->password;
     }
 
-    public function delete(string $dni): int {
-        $deleteResult = $this->collection->deleteOne(['dni' => $dni]);
-        return $deleteResult->getDeletedCount();
+    public function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    public function getUpdatedAt() {
+        return $this->updatedAt;
+    }
+
+    public function setUsername($username) {
+        $this->username = $username;
+        $this->updatedAt = new UTCDateTime();
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
+        $this->updatedAt = new UTCDateTime();
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
+        $this->updatedAt = new UTCDateTime();
     }
 }

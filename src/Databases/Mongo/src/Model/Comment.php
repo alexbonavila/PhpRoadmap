@@ -2,31 +2,51 @@
 
 namespace App\Model;
 
-use MongoDB\Collection;
+use MongoDB\BSON\UTCDateTime;
 
 class Comment {
-    private Collection $collection;
+    private $id;
+    private $postId;
+    private $userId;
+    private $content;
+    private $createdAt;
+    private $updatedAt;
 
-    public function __construct(Collection $collection) {
-        $this->collection = $collection;
+    public function __construct($postId, $userId, $content) {
+        $this->postId = $postId;
+        $this->userId = $userId;
+        $this->content = $content;
+        $this->createdAt = new UTCDateTime();
+        $this->updatedAt = new UTCDateTime();
     }
 
-    public function create(array $commentData): bool {
-        $insertOneResult = $this->collection->insertOne($commentData);
-        return $insertOneResult->isAcknowledged();
+    // Getters and setters
+    public function getId() {
+        return $this->id;
     }
 
-    public function read(string $commentId): ?object {
-        return $this->collection->findOne(['_id' => $commentId]);
+    public function getPostId() {
+        return $this->postId;
     }
 
-    public function update(string $commentId, array $newData): int {
-        $updateResult = $this->collection->updateOne(['_id' => $commentId], ['$set' => $newData]);
-        return $updateResult->getModifiedCount();
+    public function getUserId() {
+        return $this->userId;
     }
 
-    public function delete(string $commentId): int {
-        $deleteResult = $this->collection->deleteOne(['_id' => $commentId]);
-        return $deleteResult->getDeletedCount();
+    public function getContent() {
+        return $this->content;
+    }
+
+    public function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    public function getUpdatedAt() {
+        return $this->updatedAt;
+    }
+
+    public function setContent($content) {
+        $this->content = $content;
+        $this->updatedAt = new UTCDateTime();
     }
 }

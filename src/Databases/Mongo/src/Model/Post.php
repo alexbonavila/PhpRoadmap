@@ -2,32 +2,68 @@
 
 namespace App\Model;
 
-use MongoDB\Collection;
+use MongoDB\BSON\UTCDateTime;
 
 class Post {
-    private Collection $collection;
+    private $id;
+    private $userId;
+    private $title;
+    private $content;
+    private $createdAt;
+    private $updatedAt;
+    private $comments;
 
-    public function __construct(Collection $collection) {
-        $this->collection = $collection;
+    public function __construct($userId, $title, $content) {
+        $this->userId = $userId;
+        $this->title = $title;
+        $this->content = $content;
+        $this->createdAt = new UTCDateTime();
+        $this->updatedAt = new UTCDateTime();
+        $this->comments = [];
     }
 
-    public function create(array $postData): bool {
-        $insertOneResult = $this->collection->insertOne($postData);
-        return $insertOneResult->isAcknowledged();
+    // Getters and setters
+    public function getId() {
+        return $this->id;
     }
 
-    public function read(string $postId): ?object {
-        return $this->collection->findOne(['_id' => $postId]);
+    public function getUserId() {
+        return $this->userId;
     }
 
-    public function update(string $postId, array $newData): int {
-        $updateResult = $this->collection->updateOne(['_id' => $postId], ['$set' => $newData]);
-        return $updateResult->getModifiedCount();
+    public function getTitle() {
+        return $this->title;
     }
 
-    public function delete(string $postId): int {
-        $deleteResult = $this->collection->deleteOne(['_id' => $postId]);
-        return $deleteResult->getDeletedCount();
+    public function getContent() {
+        return $this->content;
+    }
+
+    public function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    public function getUpdatedAt() {
+        return $this->updatedAt;
+    }
+
+    public function getComments() {
+        return $this->comments;
+    }
+
+    public function setTitle($title) {
+        $this->title = $title;
+        $this->updatedAt = new UTCDateTime();
+    }
+
+    public function setContent($content) {
+        $this->content = $content;
+        $this->updatedAt = new UTCDateTime();
+    }
+
+    public function addComment($commentId) {
+        $this->comments[] = ['commentId' => $commentId];
+        $this->updatedAt = new UTCDateTime();
     }
 }
 

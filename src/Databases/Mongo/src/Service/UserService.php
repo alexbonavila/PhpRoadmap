@@ -3,6 +3,8 @@
 namespace App\Service;
 
 use App\Repository\UserRepository;
+use Exception;
+use MongoDB\BSON\UTCDateTime;
 
 class UserService {
     private UserRepository $userRepository;
@@ -11,27 +13,33 @@ class UserService {
         $this->userRepository = $userRepository;
     }
 
+    /**
+     * @throws Exception
+     */
     public function createUser(array $userData): bool {
-        if ($this->userRepository->getUserByDni($userData['dni'])) {
-            throw new \Exception("DNI already in database.");
+        // Validating data
+        if (!filter_var($userData['email'], FILTER_VALIDATE_EMAIL)) {
+            throw new Exception('Invalid email');
         }
+        $result = $this->userRepository->create($userData);
 
-        if (!preg_match("/^[a-zA-Z ]*$/", $userData['name'])) {
-            throw new \Exception("Not allowed characters in user name.");
-        }
-
-        return $this->userRepository->createUser($userData);
+        return $result->isAcknowledged();
     }
 
-    public function getUser(string $dni): ?object {
-        return $this->userRepository->getUserByDni($dni);
+    public function getUserByEmail(string $email): ?object {
+        return $this->userRepository->findByEmail($email);
     }
 
-    public function updateUser(string $dni, array $userData): bool {
-        return $this->userRepository->updateUser($dni, $userData) > 0;
+    public function updateUser(string $userId, array $newData): int {
+        $newData['updatedAt'] = new UTCDateTime();
+        return $this->userRepository->update($userId, $newData);
     }
 
-    public function deleteUser(string $dni): bool {
-        return $this->userRepository->deleteUser($dni) > 0;
+    public function deleteUser(string $userId): int {
+        return $this->userRepository->delete($userId);
+    }
+
+    public function getAllUsers(): array {
+        return $this->userRepository->readAll();
     }
 }
