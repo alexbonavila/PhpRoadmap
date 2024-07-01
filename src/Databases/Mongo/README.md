@@ -19,17 +19,37 @@ Additionally, this project is a component of a PHP roadmap, which is in turn par
 
 # Structure
 
+This is a simple project where the communication system with mongo and object mapping in src has been implemented and where all the code is executed, including the demonstrations in bootstrap.php.
 
 # Instructions
 
+To run the project create a .env from .env.example, and run the following command:
+
+`$ php bootstrap.php`
 
 # Database Captures
 
+![Users](../../../resources/screenshots/Mongo/users.png)
+
+![Posts](../../../resources/screenshots/Mongo/posts.png)
+
+![Comments](../../../resources/screenshots/Mongo/comments.png)
 
 # Database Structure
 
+![Structure](../../../resources/files/Mongo/Structure.png)
 
 # Execution
 
+To simplify the execution demonstration, only the beginning and end of the execution are introduced.
+
+![Start](../../../resources/screenshots/Mongo/Start%20Execution.png)
+
+![End](../../../resources/screenshots/Mongo/End%20Execution.png)
 
 # Bibliography
+- https://www.mongodb.com/
+- https://www.w3schools.com/mongodb/
+- https://www.mongodb.com/docs/drivers/php-drivers/
+- https://www.php.net/manual/en/set.mongodb.php
+- https://www.mongodb.com/docs/manual/data-modeling/
