@@ -17,7 +17,7 @@ class UserService {
     /**
      * @throws Exception
      */
-    public function createUser(User $user): object
+    public function createUser(User $user): User
     {
         // Validating data
         if (!filter_var($user->getEmail(), FILTER_VALIDATE_EMAIL)) {

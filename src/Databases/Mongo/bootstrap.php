@@ -36,7 +36,7 @@ $commentService = new CommentService($commentRepository, $postService);
 // Example data for testing
 try {
     //=============//
-    /* USER TEST */
+    /* USER DEMONSTRATION */
     //=============//
     // Create a new user
     $user = new User();
@@ -78,7 +78,7 @@ try {
 
 
     //=============//
-    /* POST TEST */
+    /* POST DEMONSTRATION */
     //=============//
     // Create a new post
     $post = new Post();
@@ -117,10 +117,42 @@ try {
 
 
     //=============//
-    /* COMMENT TEST */
+    /* COMMENT DEMONSTRATION */
     //=============//
     // Create a new comment
-    //TODO
+    $comment = new Comment();
+    $comment->userId = $user->id;
+    $comment->postId = $post->id;
+    $comment->content = "Content of comment";
+    $comment = $commentService->createComment($comment);
+
+    // Find comment by post id
+    print_r($commentService->getCommentsByPostId($post->id));
+
+    // Find comment by id
+    print_r($commentService->getCommentById($comment->id));
+
+    // Update comment
+    $comment->content = "Content of comment modified";
+    $commentService->updateComment($comment->id, $comment->toArray());
+
+    // Delete comment
+    $commentService->deleteComment($comment->id);
+
+    // List all comments
+    $comment = new Comment();
+    $comment->userId = $user->id;
+    $comment->postId = $post->id;
+    $comment->content = "Content of comment 2";
+    $comment = $commentService->createComment($comment);
+
+    $comment = new Comment();
+    $comment->userId = $user->id;
+    $comment->postId = $post->id;
+    $comment->content = "Content of comment 3";
+    $comment = $commentService->createComment($comment);
+
+    print_r($commentService->getAllComments());
 
 } catch (Exception $e) {
     echo 'Error: ' . $e->getMessage();

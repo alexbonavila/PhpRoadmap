@@ -4,7 +4,8 @@ namespace App\Model;
 
 use MongoDB\BSON\UTCDateTime;
 
-class Post {
+class Post
+{
     public string $id;
     public string $userId;
     public string $title;
@@ -13,7 +14,8 @@ class Post {
     private UTCDateTime $updatedAt;
     public array $comments;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->createdAt = new UTCDateTime();
         $this->updatedAt = new UTCDateTime();
         $this->comments = [];
@@ -73,9 +75,16 @@ class Post {
         $this->updatedAt = new UTCDateTime();
     }
 
+    public function removeComment($commentId): void
+    {
+        $this->comments = array_values(array_filter($this->comments, function ($element) use ($commentId) {
+            return $element['id'] !== $commentId;
+        }));
+    }
+
     public function mapObject($post): void
     {
-        $this->id = (string) $post['_id'];
+        $this->id = (string)$post['_id'];
         $this->userId = $post['userId'];
         $this->title = $post['title'];
         $this->content = $post['content'];

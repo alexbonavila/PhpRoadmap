@@ -13,7 +13,7 @@ class PostService {
         $this->postRepository = $postRepository;
     }
 
-    public function createPost(Post $post): object
+    public function createPost(Post $post): Post
     {
         $result = $this->postRepository->create($post->toArray());
 
@@ -63,5 +63,17 @@ class PostService {
         }
 
         return $posts;
+    }
+
+    public function addComment(string $postId, string $commentId): void
+    {
+        $post = $this->getPostById($postId);
+        $post->addComment($commentId);
+    }
+
+    public function removeComment($postId, $commentId): void
+    {
+        $post = $this->getPostById($postId);
+        $post->removeComment($commentId);
     }
 }

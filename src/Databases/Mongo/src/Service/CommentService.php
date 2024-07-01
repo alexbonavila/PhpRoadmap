@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Model\Comment;
 use App\Repository\CommentRepository;
 use MongoDB\BSON\UTCDateTime;
 
@@ -14,24 +15,48 @@ class CommentService {
         $this->postService = $postService;
     }
 
-    public function createComment(array $commentData): object
+    public function createComment(Comment $comment): Comment
     {
-        $result = $this->commentRepository->create($commentData);
-        if ($result->isAcknowledged()) {
-            // Add comment to the post
-            $commentId = $result->getInsertedId();
-            $post = $this->postService->getPostById($commentData["postId"]);
-            $post->comments[] = $commentId;
+        $result = $this->commentRepository->create($comment->toArray());
 
-            print_r($post);
+        $comment->mapObject($this->commentRepository->readById($result->getInsertedId()));
 
-            $this->postService->updatePost($commentData["postId"], $post);
-        }
-        return $this->commentRepository->readById($result->getInsertedId());
+        $this->postService->addComment($comment->postId, $comment->id);
+
+        return $comment;
+    }
+
+    public function getCommentById(string $commentId): Comment
+    {
+        $comment = new Comment();
+        $comment->mapObject($this->commentRepository->readById($commentId));
+        return $comment;
     }
 
     public function getCommentsByPostId(string $postId): array {
-        return $this->commentRepository->findByPostId($postId);
+        $comments = [];
+        $comments_raw = $this->commentRepository->findByPostId($postId);
+
+        foreach ($comments_raw as $rComment) {
+            $comment = new Comment();
+            $comment->mapObject($rComment);
+            $comments[] = $comment;
+        }
+
+        return $comments;
+    }
+
+    public function getAllComments(): array {
+        $comments = [];
+        $comments_raw = $this->commentRepository->readAll();
+
+        foreach ($comments_raw as $rComment) {
+            $comment = new Comment();
+            $comment->mapObject($rComment);
+            $comments[] = $comment;
+        }
+
+        return $comments;
     }
 
     public function updateComment(string $commentId, array $newData): int {
@@ -41,18 +66,9 @@ class CommentService {
 
     public function deleteComment(string $commentId): int {
         $comment = $this->commentRepository->readById($commentId);
-        if ($comment) {
-            $result = $this->commentRepository->delete($commentId);
-            if ($result) {
-                // Remove comment from the post
-                $this->postService->removeCommentFromPost((string)$comment->postId, $commentId);
-            }
-            return $result;
-        }
-        return 0;
-    }
 
-    public function getAllComments(): array {
-        return $this->commentRepository->readAll();
+        $this->postService->removeComment($comment->postId, $commentId);
+
+        return $this->commentRepository->delete($commentId);
     }
 }
