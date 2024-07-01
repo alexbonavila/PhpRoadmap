@@ -1,0 +1,20 @@
+{
+    "name": "abadm/mongo",
+    "description": "This is a simple project for learning mongo db",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "alexbonavila",
+            "email": "alexbonavila44@gmail.com"
+        }
+    ],
+    "require": {
+        "mongodb/mongodb": "^1.16",
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
