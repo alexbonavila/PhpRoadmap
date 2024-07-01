@@ -29,7 +29,7 @@ Lastly, the project includes a 'run.php' file which controls the execution.
 
 This code have two commands:
 
-The command below provides a wat to delete all the migrations, if these exist, and after that migrate again from fresh:
+The command below provides a way to delete all the migrations, if these exist, and after that migrate again from fresh:
 
 `$ php run.php migrate_refresh`
 

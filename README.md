@@ -68,12 +68,13 @@
 
 
 ## Databases
-- PostgreSQL
-- MongoDB
+- [PostgreSQL](https://github.com/alexbonavila/PhpRoadmap/src/Databases/Postgres)
+- [MongoDB](https://github.com/alexbonavila/PhpRoadmap/src/Databases/Mongo)
+- [PDO](https://github.com/alexbonavila/PhpRoadmap/src/Databases/Pdo)
 - ORM
   - Doctrine
-  - ActiveRecord
-- PDO
+  - Eloquent ORM
+
 
 
 ## Debugging
