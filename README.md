@@ -77,8 +77,7 @@
 
   
 ## Debugging
-- XDebug
-- Zend Debugger
+- <span style="color:red">**XDebug ---- TODO: Insert laravel project URL**</span>
 
 
 ## Code Quality
@@ -91,11 +90,11 @@
 
 
 ## API
-- REST
-- JSON API
+- <span style="color:red">**REST ---- TODO: Insert laravel project URL**</span>
+- <span style="color:red">**JSON API ---- TODO: Insert laravel project URL**</span>
 - SOAP
-- Postman
-- Swagger / OpenAPI
+- <span style="color:red">**Postman ---- TODO: Insert laravel project URL**</span>
+- <span style="color:red">**Swagger / OpenAPI ---- TODO: Insert laravel project URL**</span>
 - API Blueprint
 
 
@@ -108,24 +107,22 @@
 
 
 ## Background execution
-- Crontab
+- <span style="color:red">**Crontab ---- TODO: Insert laravel project URL**</span>
 - Queues / Message brokers
   - RabbitMQ
   - Kafka
 
 
 ## Testing
-- PHPUnit
+- <span style="color:red">**PHPUnit ---- TODO: Insert laravel project URL**</span>
 - Codeception
 - Behat
 - Infection
 
 
 ## Frameworks
-- Laravel
-- Symfony
-- YII
-- CakePHP
+- <span style="color:red">**Laravel ---- TODO: Insert laravel project URL**</span>
+- <span style="color:red">**Symfony ---- TODO: Insert symfony project URL**</span>
 
 
 ## Monitoring
